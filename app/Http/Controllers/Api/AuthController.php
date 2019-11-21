@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\User;
 
 class AuthController extends Controller
@@ -54,6 +55,8 @@ class AuthController extends Controller
      */
     public function index()
     {
-      return response()->json([User::all()],200);
+     //return response()->json([User::all()],200);
+     // return BookResource::collection(Book::with('ratings')->paginate(25));
+     return UserResource::collection(User::with('rating')->paginate(25));
     }
 }
