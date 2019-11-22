@@ -18,4 +18,12 @@ class BookController extends Controller
     {
        return $books = BookResource::collection(Book::all());          
     }
+    /**
+     * Store new book
+     * @param Object $request
+     */
+    public function store(Request $request)
+    {
+        return null;
+    }
 }
