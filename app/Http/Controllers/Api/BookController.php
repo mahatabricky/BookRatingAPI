@@ -26,4 +26,16 @@ class BookController extends Controller
     {
         return null;
     }
+    /**
+     * Showing individual book
+     * @param int $id
+     */
+    public function show($id)
+    {
+       $book = Book::find($id);
+       if(empty($book)){
+           return response()->json(['error'=>'No book found'],201);
+       }
+       return new BookResource($book);
+    }
 }
