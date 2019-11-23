@@ -16,7 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-       return $books = BookResource::collection(Book::all());          
+       return $books = BookResource::collection(Book::all());        
     }
     /**
      * Store new book
@@ -28,7 +28,7 @@ class BookController extends Controller
     }
     /**
      * Showing individual book
-     * @param int $id
+     * @param [int] $id
      */
     public function show($id)
     {
@@ -39,8 +39,25 @@ class BookController extends Controller
        return new BookResource($book);
     }
     /**
+     * Update book info
+     *
+     * @param [object] $request
+     * @param [int] $id
+     * @return void 
+     */
+    public function update(Request $request,$id)
+    {
+        $author =Book::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'author_id' => $request->author_id,
+            'user_id' => $request->user_id,
+        ]);
+        return new BookResource($book);
+    }
+    /**
      * Deleting book
-     * @param int $id
+     * @param [int] $id
      */
     public function destroy($id)
     {
