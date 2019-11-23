@@ -24,7 +24,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        return null;
+        $book =Book::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'author_id' => $request->author_id,
+            'user_id' => $request->user_id,
+        ]);
+        return new BookResource($book);
     }
     /**
      * Showing individual book
@@ -47,7 +53,8 @@ class BookController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $author =Book::create([
+        $book = Book::find($id);
+        $book =Book::create([
             'name' => $request->name,
             'description' => $request->description,
             'author_id' => $request->author_id,

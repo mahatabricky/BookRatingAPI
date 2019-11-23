@@ -44,10 +44,34 @@ class AuthorController extends Controller
         }
         return new AuthorResource($author);
     }
+    /**
+     * Update book info
+     *
+     * @param [object] $request
+     * @param [int] $id
+     * @return void 
+     */
+    public function update(Request $request,$id)
+    {
+        $author = Author::find($id);
+        if(empty($author)){
+            return response()->json(['error' => 'Author not found'],201);
+        }
+        $author->name = $request->name;
+        $author->address = $request->address;
+        $author->contact = $request->contact;
+        $author->user_id = $request->user_id;
+        $author->save();
+        
+        return new AuthorResource($author);
+    }
 
     public function destroy($id)
     {
         $author = Author::find($id)->delete();
+        if(empty($author)){
+            return response()->json(['error' => 'Author not found'],201);
+        }
         return response()->json(['Success' => 'Author has been deleted'],201);
     }
 }
