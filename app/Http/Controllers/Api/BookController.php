@@ -38,4 +38,17 @@ class BookController extends Controller
        }
        return new BookResource($book);
     }
+    /**
+     * Deleting book
+     * @param int $id
+     */
+    public function destroy($id)
+    {
+        $book = Book::find($id);
+        if(empty($book)){
+            return response()->json(['error' => 'Book not found'],201);
+        }
+        $book->delete();
+        return response()->json(['msg' => 'Book deleted successfully'],401);
+    }
 }
