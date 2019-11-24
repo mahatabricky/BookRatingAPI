@@ -15,4 +15,12 @@ class RatingController extends Controller
     {
         return null;
     }
+    public function show($id)
+    {
+        return null;
+    }
+    public function destroy($id)
+    {
+        return null;
+    }
 }
