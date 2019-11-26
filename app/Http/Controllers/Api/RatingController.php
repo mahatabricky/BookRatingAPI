@@ -26,7 +26,7 @@ class RatingController extends Controller
         if(empty($rating)){
             return response()->json(['Error' => 'No rating found '],201);
         }
-         
+        // Success for deleting 
         $rating->delete();
         return response()->json(['msg' => 'Successfully delete rating'],201);
     }
